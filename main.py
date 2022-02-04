@@ -1,29 +1,46 @@
-import os
+import requests
 import sys
-from PyQt5 import uic, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5 import uic
+
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
 
 
-class Yandex_Map_Window_Application(QMainWindow):
+class Example(QMainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('main_window.ui', self)
-        self.quit_btn.clicked.connect(self.quit)
-        self.search_btn.clicked.connect(self.search)
-        self.clear_current_search_btn.clicked.connect(self.clear_current_search)
+        uic.loadUi('main_window.ui', self)  
+        self.setWindowTitle('API-Project')
+        self.search_btn.clicked.connect(self.run)
 
-    def clear_current_search(self):
-        pass
+    def run(self):
+        if self.geo_width_input.text() and self.geo_height_input.text():
+            latitude = self.geo_width_input.text()
+            longitude = self.geo_height_input.text()
+        else:
+            self.close()
+        map_request = f"https://static-maps.yandex.ru/1.x/?ll={latitude},{longitude}&spn=0.016457,0.00619&l=map"
+        response = requests.get(map_request)
 
-    def search(self):
-        print('Выполняется запрос на поиск')
+        if not response:
+            print("Ошибка выполнения запроса:")
+            print(map_request)
+            print("Http статус:", response.status_code, "(", response.reason, ")")
+            sys.exit(1)
 
-    def quit(self):
-        sys.exit(application.exec_())
+        map_file = "map.png"
+        with open(map_file, "wb") as file:
+            file.write(response.content)
+        self.pixmap = QPixmap('map.png')
+        self.image = QLabel(self)
+        self.image.resize(573, 430)
+        self.image.move(10, 10)
+        self.image.setPixmap(self.pixmap)
+        self.image.show()
 
 
 if __name__ == '__main__':
-    application = QApplication(sys.argv)
-    window = Yandex_Map_Window_Application()
-    window.show()
-    sys.exit(application.exec_())
+    app = QApplication(sys.argv)
+    ex = Example()
+    ex.show()
+    sys.exit(app.exec())
