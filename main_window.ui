@@ -10,6 +10,24 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>898</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>898</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -77,7 +95,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="geo_width_input">
+          <widget class="QLineEdit" name="latitude_input">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -97,12 +115,12 @@
             </font>
            </property>
            <property name="text">
-            <string>Высота:</string>
+            <string>Долгота:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="geo_height_input">
+          <widget class="QLineEdit" name="longitude_input">
            <property name="font">
             <font>
              <pointsize>12</pointsize>
@@ -145,19 +163,19 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout_5">
        <item>
-        <widget class="QLabel" name="weather">
+        <widget class="QLabel" name="zoom_label">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
           </font>
          </property>
          <property name="text">
-          <string>Погода</string>
+          <string>Масштаб</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="weather_info"/>
+        <widget class="QLineEdit" name="zoom_input"/>
        </item>
       </layout>
      </item>
@@ -207,7 +225,7 @@
      <x>0</x>
      <y>0</y>
      <width>898</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
