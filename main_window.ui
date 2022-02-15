@@ -28,8 +28,14 @@
     <height>600</height>
    </size>
   </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowOpacity">
+   <double>1.000000000000000</double>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="search_btn">
@@ -147,7 +153,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="place_name_unput">
+        <widget class="QLineEdit" name="place_name_input">
          <property name="font">
           <font>
            <pointsize>12</pointsize>
@@ -217,6 +223,65 @@
     <property name="text">
      <string>Очистить текущий запрос</string>
     </property>
+   </widget>
+   <widget class="QPushButton" name="move_btn">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>50</y>
+      <width>81</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>CrossCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>Включить
+управление</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>770</x>
+      <y>130</y>
+      <width>64</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QRadioButton" name="plan_btn">
+       <property name="text">
+        <string>Схема</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="satellite_btn">
+       <property name="text">
+        <string>Спутник</string>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="hybrid_btn">
+       <property name="text">
+        <string>Гибрид</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
